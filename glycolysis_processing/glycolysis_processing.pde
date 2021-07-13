@@ -19,14 +19,13 @@ void setup(){
 void draw(){
   //make setup function for each phase?
   setup();
-  fill(255);
-  rect(40, 40, 70,70);
-  rect(120, 40,70,70);
-  fill(0);
-  text("ATP",45, 75);
-  text("ATP",125, 75);
-  text("cytosol", 400, 400);
-  beginning();
+  //!!!
+  //MAKE FUNCTIONS AND IF STATEMENTS TO CHECK FOR EACH PHASE
+  //!!!
+  moveCytosol();
+}
+void moveCytosol(){
+   rect(200, 40, 300,70);
 }
 void beginning(){
   //add glucose
