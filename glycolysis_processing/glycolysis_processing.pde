@@ -1,10 +1,21 @@
-int atp = 0;
+int phase = 1; 
 int glucose = 0;
-  
+int atp = 0;
+ 
+PImage glucoseImg; 
+PImage ATPImg; 
+PImage glucose2Img;
+PImage ADPImg; 
 void setup(){
+  glucoseImg = loadImage("glucose.PNG");
+  ATPImg = loadImage("atp.PNG");
+  glucose2Img = loadImage("glucose2.PNG");
+  ADPImg = loadImage("adp.PNG");
+  
   size(1000,1000); 
   fill(255);
   rect(800,100,175,100); //button 1
+  text("1", 800,100,175,100);
   rect(800,250,175,100); //button 2
   rect(800,400,175,100); //button 3
   fill(255);
@@ -16,35 +27,42 @@ void setup(){
   fill(255);
   rect(20, 20, 700, 950);
 }
+
 void draw(){
-  //make setup function for each phase?
   setup();
-  //!!!
-  //MAKE FUNCTIONS AND IF STATEMENTS TO CHECK FOR EACH PHASE
-  //!!!
-  moveCytosol();
+  //for each button, beginning scene uses phase 0, ending uses last phase
+  if(phase == 1){
+     moveGlucose();
+  }
+  else if(phase == 2){
+     beginning(); 
+  }
+  else if(phase == 3){
+     oneEnding(); 
+  }
+  
 }
-void moveCytosol(){
-   rect(200, 40, 300,70);
+void moveGlucose(){
+   glucose+=5;
+   image(glucoseImg, -300 + glucose, 500, 300,70);
+   if(glucose == 400){
+     phase = 2;
+   } 
 }
 void beginning(){
-  //add glucose
-  //check for intersection or set increase, changes shape, etc. 
-  //probably should make new functions, but that's alright
-  clear();
-  setup();
-  atp++;
-  fill(255);
-  rect(100, 40+atp, 70,70);
-  rect(400, 40+atp,70,70);
-  fill(0);
-  text("ATP",105, 75+atp);
-  text("ATP",405, 75+atp);
-  
+  image(glucoseImg, -300 + glucose, 500, 300,70);
+  atp+=5;
+  image(ATPImg, 100, atp, 70,70);
+  image(ATPImg, 400, atp,70,70);
+  if(atp == 500){
+     phase = 3; 
+  }
 }
-void splitting(){
-  
-}
-void energyGen(){
-  
+void oneEnding(){
+  image(glucose2Img, -300 + glucose, 500, 300,70);
+  if(atp != 900){
+     atp+=5;
+  }
+  image(ADPImg, 100, atp, 70,70);
+  image(ADPImg, 400, atp,70,70);
 }
