@@ -1,4 +1,4 @@
-int phase = 1; 
+int phase = 0; 
 int glucose = 0;
 int atp = 0;
  
@@ -6,6 +6,7 @@ PImage glucoseImg;
 PImage ATPImg; 
 PImage glucose2Img;
 PImage ADPImg; 
+
 void setup(){
   glucoseImg = loadImage("glucose.PNG");
   ATPImg = loadImage("atp.PNG");
@@ -15,9 +16,13 @@ void setup(){
   size(1000,1000); 
   fill(255);
   rect(800,100,175,100); //button 1
-  text("1", 800,100,175,100);
   rect(800,250,175,100); //button 2
   rect(800,400,175,100); //button 3
+  fill(0);
+  textSize(15);
+  text("start glycolysis", 825,150);
+  text("splitting of glyclose", 825,300);
+  text("energy generation", 825, 450);
   fill(255);
   rect(750,600,240, 390); //for description
   fill(0);
@@ -31,6 +36,9 @@ void setup(){
 void draw(){
   setup();
   //for each button, beginning scene uses phase 0, ending uses last phase
+  if(phase == 0){
+     phase1Start(); 
+  }
   if(phase == 1){
      moveGlucose();
   }
@@ -42,7 +50,20 @@ void draw(){
   }
   
 }
+void mouseClicked(){
+   if(mouseX > 800 && mouseX < 975 && mouseY > 100 && mouseY < 200){
+      phase = 1; 
+   }
+}
+void phase1Start(){
+   fill(0);
+   text("cytosol", 400, 600); 
+   image(ATPImg, 100, atp, 70,70);
+   image(ATPImg, 400, atp,70,70);
+}
 void moveGlucose(){
+   image(ATPImg, 100, atp, 70,70);
+   image(ATPImg, 400, atp,70,70);
    glucose+=5;
    image(glucoseImg, -300 + glucose, 500, 300,70);
    if(glucose == 400){
@@ -52,7 +73,7 @@ void moveGlucose(){
 void beginning(){
   image(glucoseImg, -300 + glucose, 500, 300,70);
   atp+=5;
-  image(ATPImg, 100, atp, 70,70);
+  image(ATPImg, 100, atp,70,70);
   image(ATPImg, 400, atp,70,70);
   if(atp == 500){
      phase = 3; 
