@@ -1,17 +1,22 @@
 int phase = 0; 
 int glucose = 0;
 int atp = 0;
- 
+int dpgp = 0;
+
 PImage glucoseImg; 
 PImage ATPImg; 
 PImage glucose2Img;
 PImage ADPImg; 
+PImage dpImg;
+PImage gpImg; 
 
 void setup(){
   glucoseImg = loadImage("glucose.PNG");
   ATPImg = loadImage("atp.PNG");
   glucose2Img = loadImage("glucose2.PNG");
   ADPImg = loadImage("adp.PNG");
+  dpImg = loadImage("dp.PNG");
+  gpImg = loadImage("gp.PNG");
   
   size(1000,1000); 
   fill(255);
@@ -31,6 +36,7 @@ void setup(){
   line(750,640,990,640);
   fill(255);
   rect(20, 20, 700, 950);
+  
 }
 
 void draw(){
@@ -48,11 +54,20 @@ void draw(){
   else if(phase == 3){
      oneEnding(); 
   }
-  
+  else if(phase == 4){
+     splitting(); 
+  }
 }
 void mouseClicked(){
    if(mouseX > 800 && mouseX < 975 && mouseY > 100 && mouseY < 200){
-      phase = 1; 
+     phase = 0; 
+     glucose = 0;
+     atp = 0;
+     phase = 1; 
+   }
+   else if(mouseX > 800 && mouseX < 975 && mouseY > 250 && mouseY < 350){
+     dpgp =0;
+     phase = 4; 
    }
 }
 void phase1Start(){
@@ -86,4 +101,13 @@ void oneEnding(){
   }
   image(ADPImg, 100, atp, 70,70);
   image(ADPImg, 400, atp,70,70);
+}
+void splitting(){
+  if(dpgp != 100){
+    dpgp+=1;
+  }
+  image(dpImg, 150-dpgp, 500, 150, 70);
+  image(gpImg, 300+dpgp, 500, 150, 70);
+  image(ADPImg, 100, 900, 70,70);
+  image(ADPImg, 400, 900,70,70);
 }
