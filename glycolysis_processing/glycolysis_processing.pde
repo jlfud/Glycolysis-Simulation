@@ -12,6 +12,12 @@ PImage dpImg;
 PImage gpImg; 
 PImage pImg; 
 PImage nadImg;
+PImage b13Img; 
+PImage phospho2Img;
+PImage phospho3Img;
+PImage nadhImg; 
+PImage phosphoImg; 
+PImage pyruvateImg; 
 
 void setup(){
   glucoseImg = loadImage("glucose.PNG");
@@ -22,7 +28,13 @@ void setup(){
   gpImg = loadImage("gp.PNG");
   pImg = loadImage("p.PNG");
   nadImg = loadImage("nad.PNG");
-  
+  b13Img = loadImage("13b.PNG"); 
+  phospho2Img = loadImage("2phospho.PNG");
+  phospho3Img = loadImage("3phospho.PNG");
+  nadhImg = loadImage("nadh.PNG"); 
+  phosphoImg = loadImage("phospho.PNG"); 
+  pyruvateImg = loadImage("pyruvate.PNG");
+
   size(1000,1000); 
   fill(255);
   rect(800,100,175,100); //button 1
