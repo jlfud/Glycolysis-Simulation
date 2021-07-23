@@ -2,8 +2,8 @@ int phase = 0;
 int glucose = 0;
 int atp = 0;
 int dpgp = 0;
-int p = 0;
-int nad = 0; 
+int pnad = 0;
+
 PImage glucoseImg; 
 PImage ATPImg; 
 PImage glucose2Img;
@@ -74,9 +74,12 @@ void draw(){
   else if(phase == 4){
      splitting(); 
   }
-  //7 more phases: 
-  //drop pnad
-  //drop pnad 2 (change)
+  else if(phase == 5){
+     dropPnad();
+  }
+  else if(phase == 6){
+      //drop pnad 2 (change)
+  }
   //adp moves
   //changes (atp, 3 phosphogly)
   //change and add when atp reaches top
@@ -93,6 +96,9 @@ void mouseClicked(){
    else if(mouseX > 800 && mouseX < 975 && mouseY > 250 && mouseY < 350){
      dpgp =0;
      phase = 4; 
+   }
+   else if(mouseX > 800 && mouseX < 975 && mouseY > 400 && mouseY < 500){
+      phase = 5;  
    }
 }
 void phase1Start(){
@@ -136,6 +142,17 @@ void splitting(){
   image(ADPImg, 100, 900, 70,70);
   image(ADPImg, 400, 900,70,70);
 }
-void reduction(){
-    
+void dropPnad(){
+  if(pnad != 460){
+     pnad+=5; 
+  }
+  image(dpImg, 50, 500, 150, 70);
+  image(gpImg, 400, 500, 150, 70);
+  image(ADPImg, 100, 900, 70,70);
+  image(ADPImg, 400, 900,70,70);
+  image(pImg, 40,40+pnad,50,50); 
+  image(nadImg, 100, 40+pnad, 50, 50);
+  image(pImg, 400,40+pnad,50,50); 
+  image(nadImg, 460, 40+pnad, 50, 50);
+  phase = 6; 
 }
