@@ -146,6 +146,9 @@ void dropPnad(){
   if(pnad != 460){
      pnad+=5; 
   }
+  else{
+     phase = 6; 
+  }
   image(dpImg, 50, 500, 150, 70);
   image(gpImg, 400, 500, 150, 70);
   image(ADPImg, 100, 900, 70,70);
@@ -154,5 +157,4 @@ void dropPnad(){
   image(nadImg, 100, 40+pnad, 50, 50);
   image(pImg, 400,40+pnad,50,50); 
   image(nadImg, 460, 40+pnad, 50, 50);
-  phase = 6; 
 }
