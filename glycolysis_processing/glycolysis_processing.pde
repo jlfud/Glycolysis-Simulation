@@ -12,7 +12,7 @@ PImage dpImg;
 PImage gpImg; 
 PImage pImg; 
 PImage nadImg;
-PImage b13Img; 
+PImage b13Img;   
 PImage phospho2Img;
 PImage phospho3Img;
 PImage nadhImg; 
@@ -78,7 +78,7 @@ void draw(){
      dropPnad();
   }
   else if(phase == 6){
-      //drop pnad 2 (change)
+      dropPnad2();
   }
   //adp moves
   //changes (atp, 3 phosphogly)
@@ -99,6 +99,7 @@ void mouseClicked(){
    }
    else if(mouseX > 800 && mouseX < 975 && mouseY > 400 && mouseY < 500){
       phase = 5;  
+      pnad = 0;
    }
 }
 void phase1Start(){
@@ -157,4 +158,15 @@ void dropPnad(){
   image(nadImg, 100, 40+pnad, 50, 50);
   image(pImg, 400,40+pnad,50,50); 
   image(nadImg, 460, 40+pnad, 50, 50);
+}
+void dropPnad2(){
+  if(pnad != 700){
+     pnad+=5; 
+  }
+  image(b13Img, 50, 500, 150, 70);
+  image(b13Img, 400, 500, 150, 70);
+  image(ADPImg, 100, 900, 70,70);
+  image(ADPImg, 400, 900,70,70);
+  image(nadhImg, 40,40+pnad,50,50); 
+  image(nadhImg, 400,40+pnad,50,50); 
 }
