@@ -84,6 +84,10 @@ void draw(){
   else if(phase == 7){
      moveADP(); 
   }
+  else if(phase == 8){
+     adpUp(); 
+     //change and move adp/atp
+  }
   //changes (atp, 3 phosphogly)
   //change and add when atp reaches top
   //adp up
@@ -190,4 +194,7 @@ void moveADP(){
   image(ADPImg, 400, 900-adp,70,70);
   image(nadhImg, 40,40+pnad,50,50); 
   image(nadhImg, 400,40+pnad,50,50); 
+}
+void adpUp(){
+    
 }
